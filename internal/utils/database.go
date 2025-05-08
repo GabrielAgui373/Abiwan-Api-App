@@ -19,7 +19,7 @@ var (
 
 func InitDB(config *config.DBConfig) (*gorm.DB, error) {
 	once.Do(func() {
-		dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=UTC", config.DBHost, config.DBUser, config.DBPassword, config.DBName, config.DBPort)
+		dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=require TimeZone=UTC", config.DBHost, config.DBUser, config.DBPassword, config.DBName, config.DBPort)
 
 		instance, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 		if err != nil {
